@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Which Reddit?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="middle-box">
+<P>Enter a post title below to predict the perfect subreddit for you!</P>
+<form action="/api_predict" method="post">
+    <input type="text" name="title" placeholder="Your post title...">
+    <button type="submit">Predict</button>
+</form>
+
+{% if preds_available %}
+    <p>Here are the perfect subreddits for "{{ title }}":</p>
+
+    <table>
+        <tr>
+            <th>Subreddit</th>
+            <th>Probability</th>
+        </tr>
+        {% for pred in preds %}
+        <tr>
+            <td>
+                <a href="https://www.reddit.com/r/{{ pred[0] }}" target="_blank" class="subreddit-link">
+                    {{ pred[0] }}
+                </a>
+            </td>
+            <td>{{ pred[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</div>
+</body>
+</html>
