@@ -10,12 +10,12 @@ Steps:
 
 Exporting Flask App:
 
-Linux/Mac: ```export FLASK_APP=app.py```
-Windows (CMD): ```set FLASK_APP=app.py```
+Linux/Mac: ```export FLASK_APP=app.py```<br>
+Windows (CMD): ```set FLASK_APP=app.py```<br>
 Windows (PowerShell): ```$env:FLASK_APP="app.py"```
 
 
 Debugging:
 
-If an error occures, make sure that you have installed the requirements ```pip install -r requirements.txt``` and that port 5000 is free.
-If you are using port 5000 for something else, you can cahnge the port for the app with adding a tag to the run command like so ```flask run --port=6000```
+If an error occurs, make sure that you have installed the requirements ```pip install -r requirements.txt``` and that port 5000 is free.
+If you are using port 5000 for something else, you can change the port for the app with adding a tag to the run command like so ```flask run --port=6000```
