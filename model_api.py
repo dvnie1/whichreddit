@@ -22,14 +22,6 @@ class DistilBertApi:
         with open(label_mapping_file, 'r') as f:
             self.label_mapping = json.load(f)
 
-    def predict(self, text):
-        inputs = self.tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
-        inputs = {key: val.to(self.device) for key, val in inputs.items()}
-        outputs = self.model(**inputs)
-        predicted_class = torch.argmax(outputs.logits).item()
-        predicted_subreddit = self.label_mapping[str(predicted_class)]
-        return predicted_subreddit
-
     def predict_top_5(self, text):
         inputs = self.tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
         inputs = {key: val.to(self.device) for key, val in inputs.items()}
